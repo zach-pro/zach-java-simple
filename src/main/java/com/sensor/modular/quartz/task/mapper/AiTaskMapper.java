@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  * Mapper 接口
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-08-04
  */
 @Mapper

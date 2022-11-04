@@ -10,7 +10,7 @@ import java.util.List;
  * 权限表 服务类
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 public interface AiPermissionService extends IService<AiPermission> {

@@ -12,7 +12,7 @@ import java.util.List;
  * 菜单表 Mapper 接口
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-28
  */
 @Mapper

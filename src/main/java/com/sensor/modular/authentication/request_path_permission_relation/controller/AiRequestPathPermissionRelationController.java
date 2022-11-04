@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 路径权限关联表 前端控制器
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 @RestController

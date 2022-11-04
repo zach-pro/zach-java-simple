@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 /**
  * 生成代码工具类，执行以后，根据控制台提醒输入相关参数
- * @author zyh
+ * @author apple
  */
 @Slf4j
 public class CodeGenerator {

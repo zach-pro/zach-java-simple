@@ -8,7 +8,7 @@ import com.sensor.modular.authentication.role_menu_relation.entity.AiRoleMenuRel
  *  Mapper 接口
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-08-04
  */
 public interface AiRoleMenuRelationMapper extends BaseMapper<AiRoleMenuRelation> {

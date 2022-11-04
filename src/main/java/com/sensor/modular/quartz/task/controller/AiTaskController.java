@@ -22,7 +22,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,27 +35,28 @@ import java.util.List;
  * <p>
  *  前端控制器
  * </p>
- * @author zyh
+ * @author apple
  * @since 2022-08-04
  */
 @Tag(name = "ai_task", description = "定时任务模块")
 @RestController
 @RequestMapping("/ai_task/aiTask")
 public class AiTaskController {
-    @Autowired
-    QuartzManager quartzManager;
-    @Autowired
-    private AiTaskServiceImpl taskService;
-    @Autowired
-    private AiTaskJournalServiceImpl taskJournalService;
+    final QuartzManager quartzManager;
+    final AiTaskServiceImpl taskService;
+    final AiTaskJournalServiceImpl taskJournalService;
+
+    public AiTaskController(QuartzManager quartzManager, AiTaskServiceImpl taskService, AiTaskJournalServiceImpl taskJournalService) {
+        this.quartzManager = quartzManager;
+        this.taskService = taskService;
+        this.taskJournalService = taskJournalService;
+    }
 
     @PostMapping("/saveTask")
     @Operation(summary  = "新建定时任务")
     @Transactional(rollbackFor=Exception.class)
     public JsonResult<AiTask> saveProject(@RequestBody AiTask task){
-        if (StringUtils.isBlank(task.getProjectId()) ||
-                StringUtils.isBlank(task.getTaskName()) ||
-                task.getTaskMode() == null) {
+        if (StringUtils.isBlank(task.getTaskName()) || task.getTaskMode() == null) {
             return ResultTool.fail(ResultCode.PARAM_NOT_COMPLETE);
         }
         Integer taskMode = task.getTaskMode();
@@ -119,8 +119,7 @@ public class AiTaskController {
     @Operation(summary  = "修改定时任务")
     @Transactional(rollbackFor=Exception.class)
     public JsonResult<AiTask> upTask(@RequestBody AiTask graphTask){
-        if (graphTask==null || StringUtils.isBlank(graphTask.getId()) || StringUtils.isBlank(graphTask.getProjectId()) ||
-                StringUtils.isBlank(graphTask.getTaskName()) || graphTask.getTaskMode() == null) {
+        if (graphTask==null || StringUtils.isBlank(graphTask.getId()) || StringUtils.isBlank(graphTask.getTaskName()) || graphTask.getTaskMode() == null) {
             return ResultTool.fail(ResultCode.PARAM_NOT_COMPLETE);
         }
         Integer taskMode = graphTask.getTaskMode();
@@ -140,7 +139,7 @@ public class AiTaskController {
             if (!CronUtils.isValid(corn)) {
                 return ResultTool.fail(ResultCode.PARAM_NOT_CHECK);
             }
-            quartzManager.modifyJobTime(AiTask.generateJobName(1, id), AiTask.generateJobName(2, id), AiTask.generateJobName(3, id), AiTask.generateJobName(4, id), corn);
+            quartzManager.modifyJobTime(AiTask.generateJobName(3, id), AiTask.generateJobName(4, id), corn);
         }
         return ResultTool.success(graphTask);
     }
@@ -186,7 +185,7 @@ public class AiTaskController {
         if (!CronUtils.isValid(corn)) {
             return ResultTool.fail(ResultCode.PARAM_NOT_CHECK);
         }
-        quartzManager.addJob(AiTask.generateJobName(1, id), AiTask.generateJobName(2, id), AiTask.generateJobName(3, id), AiTask.generateJobName(4, id), ScheduledJob.class, corn, task.getProjectId());
+        quartzManager.addJob(AiTask.generateJobName(1, id), AiTask.generateJobName(2, id), AiTask.generateJobName(3, id), AiTask.generateJobName(4, id), ScheduledJob.class, corn, task.getId());
         return ResultTool.success();
     }
 

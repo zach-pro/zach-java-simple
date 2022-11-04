@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 角色-权限关联关系表 Mapper 接口
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 @Mapper

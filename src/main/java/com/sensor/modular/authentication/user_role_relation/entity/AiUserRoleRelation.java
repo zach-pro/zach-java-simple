@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
  * 用户角色关联关系表
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 @Data

@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
  * 
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-08-26
  */
 @Data
@@ -25,14 +25,14 @@ public class AiTaskJournalRequest {
     @Schema(description  = "任务类型 1:自动 2:手动")
     private Integer taskMode;
 
-    @Schema(description  = "项目Id")
-    private String projectId;
+    @Schema(description  = "任务Id")
+    private String taskId;
 
     @Schema(description  = "用户Id")
     private String createUserId;
 
-    public AiTaskJournalRequest(Integer taskMode, String projectId) {
+    public AiTaskJournalRequest(Integer taskMode, String taskId) {
         this.taskMode = taskMode;
-        this.projectId = projectId;
+        this.taskId = taskId;
     }
 }

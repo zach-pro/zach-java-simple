@@ -8,7 +8,7 @@ import com.sensor.modular.authentication.request_path.entity.AiRequestPath;
  * 请求路径 服务类
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 public interface AiRequestPathService extends IService<AiRequestPath> {

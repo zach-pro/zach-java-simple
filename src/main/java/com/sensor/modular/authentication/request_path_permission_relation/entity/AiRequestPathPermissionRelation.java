@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
  * 路径权限关联表
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 @Data

@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
- * @Author: zyh
+ * @Author: apple
  * @Description: schema设计常用集合枚举
  */
 public enum SchemaUsedEnum {

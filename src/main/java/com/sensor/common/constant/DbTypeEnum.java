@@ -1,7 +1,7 @@
 package com.sensor.common.constant;
 
 /**
- * @Author: zyh
+ * @Author: apple
  * @Description: 数据库类型
  */
 public enum DbTypeEnum {

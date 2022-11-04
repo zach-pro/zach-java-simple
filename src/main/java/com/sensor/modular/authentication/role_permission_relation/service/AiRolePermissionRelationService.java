@@ -8,7 +8,7 @@ import com.sensor.modular.authentication.role_permission_relation.entity.AiRoleP
  * 角色-权限关联关系表 服务类
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 public interface AiRolePermissionRelationService extends IService<AiRolePermissionRelation> {

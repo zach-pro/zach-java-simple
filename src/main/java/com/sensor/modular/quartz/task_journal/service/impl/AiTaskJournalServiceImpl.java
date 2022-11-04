@@ -19,7 +19,7 @@ import java.util.List;
  *  服务实现类
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-08-26
  */
 @Service
@@ -38,7 +38,7 @@ public class AiTaskJournalServiceImpl extends ServiceImpl<AiTaskJournalMapper, A
     @Override
     public String saveTaskJournal(AiTaskJournalRequest taskJournalRequest) {
         AiTaskJournal journalJournal = new AiTaskJournal();
-        journalJournal.setProjectId(taskJournalRequest.getProjectId());
+        journalJournal.setTaskId(taskJournalRequest.getTaskId());
         journalJournal.setTaskMode(taskJournalRequest.getTaskMode());
         journalJournal.setTaskStatus(SchemaUsedEnum.TASK_STATUS_RUNNING.getIndex());
         journalJournal.setStartTime(LocalDateTime.now().toString());

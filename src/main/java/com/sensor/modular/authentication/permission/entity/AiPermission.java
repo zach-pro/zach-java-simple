@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
  * 权限表
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 @Data

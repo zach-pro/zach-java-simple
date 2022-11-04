@@ -33,7 +33,7 @@ public class QuartzManager {
             // 任务名，任务组，任务执行类
             JobDetail jobDetail= JobBuilder.newJob(jobClass).withIdentity(jobName, jobGroupName).build();
             JobDataMap dataMap = jobDetail.getJobDataMap();
-            dataMap.put("projectId",parameter);
+            dataMap.put("parameter",parameter);
             // 触发器
             TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
             // 触发器名,触发器组
@@ -63,8 +63,7 @@ public class QuartzManager {
      * @param triggerGroupName 触发器组名
      * @param cron   时间设置，参考quartz说明文档
      */
-    public void modifyJobTime(String jobName,
-                              String jobGroupName, String triggerName, String triggerGroupName, String cron) {
+    public void modifyJobTime(String triggerName, String triggerGroupName, String cron) {
         try {
             Scheduler scheduler = SCHEDULER_FACTORY.getScheduler();
             TriggerKey triggerKey = TriggerKey.triggerKey(triggerName, triggerGroupName);
@@ -72,7 +71,6 @@ public class QuartzManager {
             if (trigger == null) {
                 return;
             }
-
             String oldTime = trigger.getCronExpression();
             if (!oldTime.equalsIgnoreCase(cron)) {
                 /* 方式一 ：调用 rescheduleJob 开始 */
@@ -85,7 +83,7 @@ public class QuartzManager {
                 triggerBuilder.withSchedule(CronScheduleBuilder.cronSchedule(cron));
                 // 创建Trigger对象
                 trigger = (CronTrigger) triggerBuilder.build();
-                // 方式一 ：修改一个任务的触发时间
+                // 修改一个任务的触发时间
                 scheduler.rescheduleJob(triggerKey, trigger);
                 /* 方式一 ：调用 rescheduleJob 结束 */
             }

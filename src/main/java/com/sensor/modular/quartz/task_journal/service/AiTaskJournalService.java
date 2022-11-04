@@ -13,7 +13,7 @@ import java.util.List;
  *  服务类
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-08-26
  */
 public interface AiTaskJournalService extends IService<AiTaskJournal> {

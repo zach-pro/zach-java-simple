@@ -8,7 +8,7 @@ import com.sensor.modular.authentication.role.entity.AiRole;
  *  服务类
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-28
  */
 public interface AiRoleService extends IService<AiRole> {

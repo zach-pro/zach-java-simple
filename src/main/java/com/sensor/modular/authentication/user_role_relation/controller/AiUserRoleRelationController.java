@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 用户角色关联关系表 前端控制器
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-07-29
  */
 @Tag(name = "ai_user_role_relation", description = "用户角色关联模块")

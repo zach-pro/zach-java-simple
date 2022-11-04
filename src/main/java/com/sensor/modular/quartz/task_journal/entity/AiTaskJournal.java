@@ -11,13 +11,16 @@ import lombok.experimental.Accessors;
  * 
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-08-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class AiTaskJournal extends BaseEntity<AiTaskJournal> {
+
+    @Schema(description  = "任务id")
+    private String taskId;
 
     @Schema(description  = "任务类型 1:自动 2:手动")
     private Integer taskMode;
@@ -33,7 +36,4 @@ public class AiTaskJournal extends BaseEntity<AiTaskJournal> {
 
     @Schema(description  = "结束时间")
     private String endTime;
-
-    @Schema(description  = "项目Id")
-    private String projectId;
 }

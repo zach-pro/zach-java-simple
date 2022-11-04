@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
  *
  * </p>
  *
- * @author zyh
+ * @author apple
  * @since 2022-08-04
  */
 @Data
@@ -23,9 +23,6 @@ public class AiTask extends BaseEntity<AiTask> {
 
     @Schema(description  = "任务名称")
     private String taskName;
-
-    @Schema(description  = "项目id")
-    private String projectId;
 
     @Schema(description  = "定时任务方式")
     private Integer taskMode;
