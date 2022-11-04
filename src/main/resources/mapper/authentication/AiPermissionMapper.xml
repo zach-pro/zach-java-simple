@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sensor.modular.authentication.permission.mapper.AiPermissionMapper">
+    <sql id="permissionColumns">
+
+    </sql>
+
+    <sql id="permissionJoins">
+
+    </sql>
+
+    <select id="selectListByPath" resultType="com.sensor.modular.authentication.permission.entity.AiPermission">
+        SELECT gp.id              as id,
+               gp.permission_code as permissionCode,
+               gp.permission_name as permissionName
+        from ai_permission AS gp
+                 LEFT JOIN ai_request_path_permission_relation AS grppr on gp.id = grppr.permission_id
+                 LEFT JOIN ai_request_path AS grp on grppr.url_id = grp.id
+        WHERE grp.url = #{url}
+    </select>
+</mapper>

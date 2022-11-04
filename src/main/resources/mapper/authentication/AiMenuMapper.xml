@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sensor.modular.authentication.menu.mapper.AiMenuMapper">
+    <select id="selMenuByRoleId" resultType="com.sensor.modular.authentication.menu.entity.AiMenu">
+        SELECT
+            gm.id,
+            gm.parent_id as parentId,
+            gm.menu_href as menuHref,
+            gm.menu_name as menuName,
+            gm.sort,
+            gm.type
+        FROM
+            ai_menu gm
+                LEFT JOIN
+            ai_role_menu_relation grmr
+            ON
+                gm.id = grmr.menu_id
+        WHERE
+            grmr.role_id = #{roleId}
+    </select>
+
+    <select id="selectMenuOne" resultType="com.sensor.modular.authentication.menu.entity.AiMenu">
+        SELECT
+            gm.id,
+            gm.parent_id as parentId,
+            gp.menu_name as parentName,
+            gm.menu_href as menuHref,
+            gm.menu_name as menuName,
+            gm.sort,
+            gm.type,
+            gm.create_user,
+            gm.create_time
+        FROM
+            ai_menu AS gm left join ai_menu gp on gm.parent_id = gp.id
+        where gm.id = #{id}
+    </select>
+
+    <select id="selectSubclassMenuList" resultType="com.sensor.modular.authentication.menu.entity.AiMenu">
+        SELECT
+            gm.id,
+            gm.parent_id as parentId,
+            gp.menu_name as parentName,
+            gm.menu_href as menuHref,
+            gm.menu_name as menuName,
+            gm.sort,
+            gm.type,
+            gm.create_user,
+            gm.create_time
+        FROM
+            ai_menu AS gm left join ai_menu gp on gm.parent_id = gp.id
+    </select>
+
+    <select id="selParentMenuLists" resultType="com.sensor.modular.authentication.menu.entity.AiMenu">
+        SELECT
+            gm.id,
+            gm.menu_href as menuHref,
+            gm.menu_name as menuName,
+            gm.sort,
+            gm.type,
+            gm.create_user,
+            gm.create_time
+        FROM
+            ai_menu AS gm
+        where gm.type = 1
+    </select>
+</mapper>
