@@ -95,10 +95,6 @@ springdoc:
   packages-to-scan: com.sensor.modular
   #这里定义了两个分组，可定义多个，也可以不定义
   group-configs:
-#    #分组名
-#    - group: admin
-#      #按路径匹配
-#      pathsToMatch: /demo_url/*
       #分组名
     - group: sensor
       #按包路径匹配
