@@ -8,7 +8,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Description Jedis配置类
  */
 @Configuration

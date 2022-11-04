@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname SpringApplicationUtils
  * @Description 手动获取bean的实例
  * @Date 2022/8/12 3:04

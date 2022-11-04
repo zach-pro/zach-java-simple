@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Author: 张益豪
+ * @Author: apple
  * @Description: 会话信息过期策略
  */
 @Component

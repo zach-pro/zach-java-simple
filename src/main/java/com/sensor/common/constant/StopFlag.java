@@ -1,7 +1,7 @@
 package com.sensor.common.constant;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname StopFlag
  * @Description 用户状态
  * @Date 2022/7/29 11:10

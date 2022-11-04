@@ -1,7 +1,7 @@
 package com.sensor.common.config.security.handler;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname CustomizeAuthenticationSuccessHandler
  * @Description TODO
  * @Date 2022/7/29 15:27
@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author: 张益豪
+ * @Author: apple
  * @Description: 登录成功处理逻辑
  */
 @Component

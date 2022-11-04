@@ -7,7 +7,7 @@ import com.sensor.common.utils.PropertiesLoader;
 import java.util.Map;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname Global
  * @Description 全局对象
  * @Date 2022/7/28 15:46

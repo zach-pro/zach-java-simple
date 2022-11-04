@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname UserDetailsServiceImpl
  * @Description 校验登录用户
  * @Date 2022/7/29 14:28

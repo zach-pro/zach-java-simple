@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Author: 张益豪
+ * @Author: apple
  * @Description: 登出成功处理逻辑
  */
 @Component

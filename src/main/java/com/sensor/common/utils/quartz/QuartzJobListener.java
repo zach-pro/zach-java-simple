@@ -3,7 +3,7 @@ package com.sensor.common.utils.quartz;
 import org.springframework.stereotype.Service;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname QuartzJobListener
  * @Description 初始化加载定时任务
  */

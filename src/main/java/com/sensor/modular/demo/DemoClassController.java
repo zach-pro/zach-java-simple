@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname DemoClassController
  * @Description TODO
  * @Date 2022/11/3 15:42

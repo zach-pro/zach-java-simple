@@ -7,7 +7,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname RestTemplateConfig
  * @Description RestTemplate配置类
  */

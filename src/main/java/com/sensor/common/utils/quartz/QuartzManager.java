@@ -6,7 +6,7 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname QuartzManager
  * @Description quartz工具类
  */

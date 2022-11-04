@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname GeneralTest
  * @Description 接口测试类
  * @Date 2022/11/3 15:13

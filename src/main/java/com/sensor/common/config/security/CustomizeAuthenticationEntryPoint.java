@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Author: 张益豪
+ * @Author: apple
  * @Description: 匿名用户访问无权限资源时的异常
  */
 @Component

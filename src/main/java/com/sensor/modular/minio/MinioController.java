@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname MinioController
  * @Description 通用服务: 文件系统
  * @Date 2022/9/7 19:43

@@ -1,7 +1,7 @@
 package com.sensor.common.utils;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname PropertiesLoader
  */
 

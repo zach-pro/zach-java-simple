@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname BaseEntity
  * @Description 基类
  */

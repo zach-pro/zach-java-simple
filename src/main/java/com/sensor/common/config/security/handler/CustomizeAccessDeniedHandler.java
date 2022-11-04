@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname CustomizeAccessDeniedHandler
  * @Description 自定义权限拒绝策略
  * @Date 2022/7/29 17:11

@@ -12,7 +12,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname AsyncConfig
  * @Description 线程池
  * @Date 2022/9/9 15:20

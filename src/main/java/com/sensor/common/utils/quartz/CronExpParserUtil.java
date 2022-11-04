@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname CronExpParserUtil
  * @Description cron翻译中文
  */

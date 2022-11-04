@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author by 张益豪
+ * @author by apple
  * @Classname MinioUtil
  * @Description TODO
  * @Date 2022/9/7 19:31
