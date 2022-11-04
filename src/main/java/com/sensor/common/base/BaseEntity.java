@@ -3,6 +3,8 @@ package com.sensor.common.base;
 import cn.hutool.core.lang.id.NanoId;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sensor.common.config.Global;
+import com.sensor.common.utils.sys.UserUtils;
+import com.sensor.modular.authentication.user.entity.AiUser;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.junit.platform.commons.util.StringUtils;
@@ -65,10 +67,10 @@ public class BaseEntity<T> implements Serializable {
         if(StringUtils.isBlank(getId())){
             setId(NanoId.randomNanoId());
         }
-        //GraphUser user = UserUtils.getUser();
-        //if (StringUtils.isNotBlank(user.getAccount())){
-          //  this.createUser = user.getId();
-        //}
+        AiUser user = UserUtils.getUser();
+        if (StringUtils.isNotBlank(user.getAccount())){
+            this.createUser = user.getId();
+        }
         this.createTime = LocalDateTime.now() + "";
     }
 

@@ -26,7 +26,6 @@ public class CustomizeAuthenticationFailureHandler implements AuthenticationFail
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         //返回json数据
-        log.info("登录失败处理逻辑");
         JsonResult result = null;
         if (e instanceof AccountExpiredException) {
             //账号过期

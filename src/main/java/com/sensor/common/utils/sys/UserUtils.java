@@ -42,9 +42,9 @@ public class UserUtils {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && !(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUserName = authentication.getName();
-            AiUser graphUser = aiUserService.loadUserByName(currentUserName);
-            if (graphUser != null) {
-                return graphUser;
+            AiUser aiUser = aiUserService.loadUserByName(currentUserName);
+            if (aiUser != null) {
+                return aiUser;
             }
         }
         // 如果没有登录，则返回实例化空的User对象。

@@ -27,7 +27,6 @@ public class CustomizeFilterInvocationSecurityMetadataSource implements FilterIn
         this.aiPermissionService = aiPermissionService;
     }
 
-
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
         //获取请求地址

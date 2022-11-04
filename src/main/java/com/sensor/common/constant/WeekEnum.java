@@ -2,8 +2,6 @@ package com.sensor.common.constant;
 /**
  * @author by apple
  * @Classname WeekEnum
- * @Description TODO
- * @Date 2022/8/12 15:52
  */
 public enum WeekEnum
 {

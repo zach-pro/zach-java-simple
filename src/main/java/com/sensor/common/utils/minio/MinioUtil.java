@@ -35,8 +35,6 @@ import java.util.Map;
 /**
  * @author by apple
  * @Classname MinioUtil
- * @Description TODO
- * @Date 2022/9/7 19:31
  */
 @Slf4j
 @Component

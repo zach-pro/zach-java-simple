@@ -3,8 +3,6 @@ package com.sensor.common.constant;
 /**
  * @author by apple
  * @Classname LockFlag
- * @Description TODO
- * @Date 2022/7/29 11:12
  */
 public enum LockFlag {
     /**

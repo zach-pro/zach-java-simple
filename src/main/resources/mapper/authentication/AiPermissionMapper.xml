@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sensor.modular.authentication.permission.mapper.AiPermissionMapper">
-    <sql id="permissionColumns">
+    <sql id="permissionColumns"></sql>
 
-    </sql>
-
-    <sql id="permissionJoins">
-
-    </sql>
+    <sql id="permissionJoins"></sql>
 
     <select id="selectListByPath" resultType="com.sensor.modular.authentication.permission.entity.AiPermission">
         SELECT gp.id              as id,

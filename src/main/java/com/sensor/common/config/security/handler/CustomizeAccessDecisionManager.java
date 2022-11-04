@@ -24,9 +24,6 @@ public class CustomizeAccessDecisionManager implements AccessDecisionManager {
             //当前用户所具有的权限
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             for (GrantedAuthority authority : authorities) {
-                if ("ROLE_ANONYMOUS".equals(authority.getAuthority())) {
-                    return;
-                }
                 if (authority.getAuthority().equals(needRole)) {
                     return;
                 }

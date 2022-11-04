@@ -15,7 +15,9 @@ import java.util.List;
  * 
  */
 public interface AiUserService extends IService<AiUser> {
-    // 基于用户名查询用户信息
+    /**
+     * 基于用户名查询用户信息
+     */
     AiUser loadUserByName(String username);
 
     List<AiPermission> selectListByUser(String userId);

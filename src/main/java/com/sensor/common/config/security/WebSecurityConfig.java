@@ -89,7 +89,7 @@ public class WebSecurityConfig {
         //http相关的配置，包括登入登出、异常处理、会话管理等
         http.cors().and().csrf().disable().userDetailsService(userDetailsService());
         http.authorizeRequests().
-                 antMatchers("/**").permitAll().
+                 // antMatchers("/**").permitAll().
             withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                 @Override
                 public <O extends FilterSecurityInterceptor> O postProcess(O o) {

@@ -7,7 +7,6 @@ import lombok.Getter;
  * @author by apple
  * @Classname NebulaConstant
  * @Description nebula常用字符串
- * @Date 2022/8/17 17:14
  */
 public class NebulaConstant {
     public static final String USE = "USE ";
