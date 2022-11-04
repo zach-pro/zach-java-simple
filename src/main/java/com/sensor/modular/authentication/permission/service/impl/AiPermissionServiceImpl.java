@@ -21,7 +21,7 @@ import java.util.Map;
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 @Service
 public class AiPermissionServiceImpl extends ServiceImpl<AiPermissionMapper, AiPermission> implements AiPermissionService {

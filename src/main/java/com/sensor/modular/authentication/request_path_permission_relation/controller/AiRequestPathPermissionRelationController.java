@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 @RestController
 @RequestMapping("/ai_request_path_permission_relation/aiRequestPathPermissionRelation")

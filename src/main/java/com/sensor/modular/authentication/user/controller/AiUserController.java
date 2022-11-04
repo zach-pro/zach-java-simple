@@ -35,7 +35,7 @@ import java.util.Map;
  * </p>
  *
  * @author apple
- * @since 2022-07-28
+ * 
  */
 @Tag(name = "ai_user", description = "用户模块")
 @RestController

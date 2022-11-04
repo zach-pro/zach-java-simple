@@ -12,7 +12,7 @@ import java.util.List;
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 @Mapper
 public interface AiPermissionMapper extends BaseMapper<AiPermission> {

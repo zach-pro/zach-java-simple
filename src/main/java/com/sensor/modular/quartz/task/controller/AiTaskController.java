@@ -36,7 +36,7 @@ import java.util.List;
  *  前端控制器
  * </p>
  * @author apple
- * @since 2022-08-04
+ * 
  */
 @Tag(name = "ai_task", description = "定时任务模块")
 @RestController

@@ -15,7 +15,7 @@ import java.util.List;
  * </p>
  *
  * @author apple
- * @since 2022-08-26
+ * 
  */
 @Mapper
 public interface AiTaskJournalMapper extends BaseMapper<AiTaskJournal> {

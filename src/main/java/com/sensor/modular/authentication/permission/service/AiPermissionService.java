@@ -11,7 +11,7 @@ import java.util.List;
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 public interface AiPermissionService extends IService<AiPermission> {
     List<AiPermission> selectListByPath(String uri);

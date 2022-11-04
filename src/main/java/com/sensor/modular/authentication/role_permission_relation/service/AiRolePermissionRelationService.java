@@ -9,7 +9,7 @@ import com.sensor.modular.authentication.role_permission_relation.entity.AiRoleP
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 public interface AiRolePermissionRelationService extends IService<AiRolePermissionRelation> {
 

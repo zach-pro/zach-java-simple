@@ -9,7 +9,7 @@ import com.sensor.modular.authentication.request_path_permission_relation.entity
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 public interface AiRequestPathPermissionRelationService extends IService<AiRequestPathPermissionRelation> {
 

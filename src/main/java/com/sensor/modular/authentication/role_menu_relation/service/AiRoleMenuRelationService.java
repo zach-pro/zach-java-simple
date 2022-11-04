@@ -9,7 +9,7 @@ import com.sensor.modular.authentication.role_menu_relation.entity.AiRoleMenuRel
  * </p>
  *
  * @author apple
- * @since 2022-08-04
+ * 
  */
 public interface AiRoleMenuRelationService extends IService<AiRoleMenuRelation> {
 

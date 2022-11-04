@@ -9,7 +9,7 @@ import com.sensor.modular.authentication.user_role_relation.entity.AiUserRoleRel
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 public interface AiUserRoleRelationMapper extends BaseMapper<AiUserRoleRelation> {
 

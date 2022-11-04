@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 @Mapper
 public interface AiRequestPathPermissionRelationMapper extends BaseMapper<AiRequestPathPermissionRelation> {

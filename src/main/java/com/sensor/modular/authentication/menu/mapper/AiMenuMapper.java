@@ -13,7 +13,7 @@ import java.util.List;
  * </p>
  *
  * @author apple
- * @since 2022-07-28
+ * 
  */
 @Mapper
 public interface AiMenuMapper extends BaseMapper<AiMenu> {

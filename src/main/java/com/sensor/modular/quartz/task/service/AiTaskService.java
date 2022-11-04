@@ -9,7 +9,7 @@ import com.sensor.modular.quartz.task.entity.AiTask;
  * </p>
  *
  * @author apple
- * @since 2022-08-04
+ * 
  */
 public interface AiTaskService extends IService<AiTask> {
 

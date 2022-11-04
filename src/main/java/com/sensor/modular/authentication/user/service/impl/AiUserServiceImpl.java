@@ -15,7 +15,7 @@ import java.util.List;
  * </p>
  *
  * @author zach
- * @since 2022-11-04
+ * 
  */
 @Service
 public class AiUserServiceImpl extends ServiceImpl<AiUserMapper, AiUser> implements AiUserService {

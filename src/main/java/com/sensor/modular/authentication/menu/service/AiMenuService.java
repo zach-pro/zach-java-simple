@@ -11,7 +11,7 @@ import java.util.List;
  * </p>
  *
  * @author apple
- * @since 2022-07-28
+ * 
  */
 public interface AiMenuService extends IService<AiMenu> {
     List<AiMenu> selMenuByRoleId(String roleId);

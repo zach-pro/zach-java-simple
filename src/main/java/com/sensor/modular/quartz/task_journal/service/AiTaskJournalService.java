@@ -14,7 +14,7 @@ import java.util.List;
  * </p>
  *
  * @author apple
- * @since 2022-08-26
+ * 
  */
 public interface AiTaskJournalService extends IService<AiTaskJournal> {
     List<AiTaskJournalResponse> selectTaskJournalList(AiTaskJournalRequest taskJournalRequest);

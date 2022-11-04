@@ -9,7 +9,7 @@ import com.sensor.modular.authentication.role.entity.AiRole;
  * </p>
  *
  * @author apple
- * @since 2022-07-28
+ * 
  */
 public interface AiRoleMapper extends BaseMapper<AiRole> {
 

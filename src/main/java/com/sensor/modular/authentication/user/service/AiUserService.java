@@ -12,7 +12,7 @@ import java.util.List;
  * </p>
  *
  * @author zach
- * @since 2022-11-04
+ * 
  */
 public interface AiUserService extends IService<AiUser> {
     // 基于用户名查询用户信息

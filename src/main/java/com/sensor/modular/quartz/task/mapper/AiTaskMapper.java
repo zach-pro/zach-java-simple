@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * </p>
  *
  * @author apple
- * @since 2022-08-04
+ * 
  */
 @Mapper
 public interface AiTaskMapper extends BaseMapper<AiTask> {

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author apple
- * @since 2022-08-26
+ * 
  */
 @Tag(name = "ai_task_journal", description = "任务日志模块")
 @RestController

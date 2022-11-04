@@ -20,7 +20,7 @@ import java.util.List;
  * </p>
  *
  * @author apple
- * @since 2022-08-26
+ * 
  */
 @Service
 public class AiTaskJournalServiceImpl extends ServiceImpl<AiTaskJournalMapper, AiTaskJournal> implements AiTaskJournalService {

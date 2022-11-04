@@ -27,7 +27,7 @@ import java.util.List;
  * </p>
  *
  * @author apple
- * @since 2022-07-29
+ * 
  */
 @Tag(name = "ai_request_path", description = "请求路径管理模块")
 @RestController

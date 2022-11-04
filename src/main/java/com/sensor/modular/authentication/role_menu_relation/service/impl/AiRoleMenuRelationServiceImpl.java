@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author apple
- * @since 2022-08-04
+ * 
  */
 @Service
 public class AiRoleMenuRelationServiceImpl extends ServiceImpl<AiRoleMenuRelationMapper, AiRoleMenuRelation> implements AiRoleMenuRelationService {
