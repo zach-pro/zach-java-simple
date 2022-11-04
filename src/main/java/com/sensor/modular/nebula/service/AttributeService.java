@@ -10,7 +10,6 @@ import com.sensor.common.utils.nebula.NebulaUtil;
 import com.sensor.modular.nebula.entity.graph.*;
 import com.sensor.modular.nebula.vo.AttributeVo;
 import com.sensor.modular.nebula.vo.CommonVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -24,8 +23,11 @@ import java.util.List;
 public class AttributeService {
 
 
-    @Autowired
-    GraphCommonService graphCommonService;
+    final GraphCommonService graphCommonService;
+
+    public AttributeService(GraphCommonService graphCommonService) {
+        this.graphCommonService = graphCommonService;
+    }
 
     /**
      * @return java.util.List<com.hoteamsoft.common.vo.CommonVo>

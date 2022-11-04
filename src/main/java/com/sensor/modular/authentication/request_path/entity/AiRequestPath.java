@@ -22,6 +22,12 @@ public class AiRequestPath extends BaseEntity<AiRequestPath> {
     @Schema(description  = "请求路径")
     private String url;
 
+    @Schema(description  = "标签组")
+    private String tagName;
+
+    @Schema(description  = "下标值")
+    private Integer tagRank;
+
     @Schema(description  = "路径描述")
     private String description;
 

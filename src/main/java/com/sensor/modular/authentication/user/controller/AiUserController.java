@@ -17,7 +17,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,14 +42,17 @@ import java.util.Map;
 @RequestMapping("/ai_user/aiUser")
 @Transactional(rollbackFor=Exception.class)
 public class AiUserController {
-    @Autowired
-    private JedisPool jedisPool;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired
-    private AiUserServiceImpl aiUserService;
-    @Autowired
-    private AiUserRoleRelationServiceImpl aiUserRoleRelationService;
+    private final JedisPool jedisPool;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final AiUserServiceImpl aiUserService;
+    private final AiUserRoleRelationServiceImpl aiUserRoleRelationService;
+
+    public AiUserController(JedisPool jedisPool, BCryptPasswordEncoder bCryptPasswordEncoder, AiUserServiceImpl aiUserService, AiUserRoleRelationServiceImpl aiUserRoleRelationService) {
+        this.jedisPool = jedisPool;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.aiUserService = aiUserService;
+        this.aiUserRoleRelationService = aiUserRoleRelationService;
+    }
 
     @PostMapping("/saveUser")
     @Operation(summary = "保存用户信息")

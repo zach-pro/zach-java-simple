@@ -14,7 +14,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,10 +38,13 @@ import java.util.Map;
 @Transactional(rollbackFor=Exception.class)
 public class AiMenuController {
 
-    @Autowired
-    private AiMenuServiceImpl menuService;
-    @Autowired
-    private AiRoleMenuRelationServiceImpl roleMenuRelationService;
+    private final AiMenuServiceImpl menuService;
+    private final AiRoleMenuRelationServiceImpl roleMenuRelationService;
+
+    public AiMenuController(AiMenuServiceImpl menuService, AiRoleMenuRelationServiceImpl roleMenuRelationService) {
+        this.menuService = menuService;
+        this.roleMenuRelationService = roleMenuRelationService;
+    }
 
     @PostMapping("/saveMenu")
     @Operation(summary  = "新建菜单")

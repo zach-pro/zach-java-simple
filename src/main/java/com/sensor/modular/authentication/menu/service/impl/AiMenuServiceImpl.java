@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.sensor.modular.authentication.menu.entity.AiMenu;
 import com.sensor.modular.authentication.menu.mapper.AiMenuMapper;
 import com.sensor.modular.authentication.menu.service.AiMenuService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +19,11 @@ import java.util.List;
 @Service
 public class AiMenuServiceImpl extends ServiceImpl<AiMenuMapper, AiMenu> implements AiMenuService {
 
-    @Autowired
-    private AiMenuMapper aiMenuMapper;
+    private final AiMenuMapper aiMenuMapper;
+    public AiMenuServiceImpl(AiMenuMapper aiMenuMapper) {
+        this.aiMenuMapper = aiMenuMapper;
+    }
+
     @Override
     public List<AiMenu> selMenuByRoleId(String roleId) {
         return aiMenuMapper.selMenuByRoleId(roleId);

@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 public class GraphShowEdge {
 
     /**
-     * 项目ID
+     * 空间
      **/
-    @Schema(description ="项目ID",example = "sense")
-    private String projectId;
+    @Schema(description ="空间",example = "sense")
+    private String space;
 
     /**
      * attributeName:  tag 名称/edge 名称

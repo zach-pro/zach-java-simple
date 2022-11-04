@@ -7,7 +7,6 @@ import com.sensor.common.utils.nebula.NebulaUtil;
 import com.sensor.modular.nebula.entity.graph.GraphShowAttribute;
 import com.sensor.modular.nebula.vo.AttributeVo;
 import com.sensor.modular.nebula.vo.DetailSpace;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +19,12 @@ import java.util.List;
 @Service
 public class SpaceService {
 
-    @Autowired
-    GraphCommonService graphCommonService;
+    final GraphCommonService graphCommonService;
+    public SpaceService(GraphCommonService graphCommonService) {
+        this.graphCommonService = graphCommonService;
+    }
 
     public List<DetailSpace> detailSpace(GraphShowAttribute graphShowAttribute) {
-
         // 所有图空间
         List<AttributeVo> spacesList = graphCommonService.executeJson(NebulaUtil.showAttributes(graphShowAttribute), AttributeVo.class);
         AttributeVo attributeVo1 = spacesList.get(0);

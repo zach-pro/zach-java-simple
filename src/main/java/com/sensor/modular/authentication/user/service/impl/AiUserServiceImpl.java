@@ -5,7 +5,6 @@ import com.sensor.modular.authentication.permission.entity.AiPermission;
 import com.sensor.modular.authentication.user.entity.AiUser;
 import com.sensor.modular.authentication.user.mapper.AiUserMapper;
 import com.sensor.modular.authentication.user.service.AiUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +19,10 @@ import java.util.List;
  */
 @Service
 public class AiUserServiceImpl extends ServiceImpl<AiUserMapper, AiUser> implements AiUserService {
-    @Autowired
-    AiUserMapper aiUserMapper;
+    final AiUserMapper aiUserMapper;
+    public AiUserServiceImpl(AiUserMapper aiUserMapper) {
+        this.aiUserMapper = aiUserMapper;
+    }
 
     @Override
     public AiUser loadUserByName(String userName) {

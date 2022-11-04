@@ -12,5 +12,9 @@ import com.sensor.modular.authentication.request_path.entity.AiRequestPath;
  * @since 2022-07-29
  */
 public interface AiRequestPathService extends IService<AiRequestPath> {
-
+    /**
+     * @param tagName 查询当前请求路径的序号
+     * @return
+     */
+    Integer selTagNextRank(String tagName);
 }

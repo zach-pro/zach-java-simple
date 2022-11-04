@@ -25,7 +25,6 @@ import java.util.List;
 @Service
 public class AiTaskJournalServiceImpl extends ServiceImpl<AiTaskJournalMapper, AiTaskJournal> implements AiTaskJournalService {
     private final AiTaskJournalMapper aiTaskJournalMapper;
-    @Autowired
     public AiTaskJournalServiceImpl(AiTaskJournalMapper aiTaskJournalMapper) {
         this.aiTaskJournalMapper = aiTaskJournalMapper;
     }

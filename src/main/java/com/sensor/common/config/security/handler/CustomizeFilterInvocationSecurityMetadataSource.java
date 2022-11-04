@@ -2,7 +2,6 @@ package com.sensor.common.config.security.handler;
 
 import com.sensor.modular.authentication.permission.entity.AiPermission;
 import com.sensor.modular.authentication.permission.service.impl.AiPermissionServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
@@ -22,12 +21,12 @@ import java.util.List;
 public class CustomizeFilterInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
     public static final String MARK = "?";
     AntPathMatcher antPathMatcher = new AntPathMatcher();
+    final AiPermissionServiceImpl aiPermissionService;
 
-    AiPermissionServiceImpl aiPermissionService;
-    @Autowired
     public CustomizeFilterInvocationSecurityMetadataSource(AiPermissionServiceImpl aiPermissionService) {
         this.aiPermissionService = aiPermissionService;
     }
+
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {

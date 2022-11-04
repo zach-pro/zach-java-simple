@@ -2,6 +2,7 @@ package com.sensor.modular.authentication.request_path.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.sensor.modular.authentication.request_path.entity.AiRequestPath;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.sensor.modular.authentication.request_path.entity.AiRequestPath;
  * @author apple
  * @since 2022-07-29
  */
+@Mapper
 public interface AiRequestPathMapper extends BaseMapper<AiRequestPath> {
-
+    Integer nextRank(String tagName);
 }

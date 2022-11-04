@@ -100,7 +100,7 @@ public class NebulaController {
     @PostMapping("/showTagEdge")
     @Operation(summary = "查询实体关联边")
     public JsonResult showTagEdge(@RequestBody GraphShowEdge space) {
-        if (StringUtils.isBlank(space.getProjectId().trim()) ||
+        if (StringUtils.isBlank(space.getSpace().trim()) ||
                 StringUtils.isBlank(space.getAttributeName().trim())) {
             return ResultTool.fail();
         }

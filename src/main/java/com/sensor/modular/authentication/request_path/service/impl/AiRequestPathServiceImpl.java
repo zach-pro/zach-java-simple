@@ -16,5 +16,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AiRequestPathServiceImpl extends ServiceImpl<AiRequestPathMapper, AiRequestPath> implements AiRequestPathService {
+    final AiRequestPathMapper aiRequestPathMap;
+    public AiRequestPathServiceImpl(AiRequestPathMapper aiRequestPathMap) {
+        this.aiRequestPathMap = aiRequestPathMap;
+    }
 
+    @Override
+    public Integer selTagNextRank(String tagName) {
+        return aiRequestPathMap.nextRank(tagName);
+    }
 }

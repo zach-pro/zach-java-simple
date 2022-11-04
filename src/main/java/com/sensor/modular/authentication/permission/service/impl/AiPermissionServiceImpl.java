@@ -28,7 +28,6 @@ public class AiPermissionServiceImpl extends ServiceImpl<AiPermissionMapper, AiP
     private final AiPermissionMapper aiPermissionMapper;
     private final AiRolePermissionRelationMapper aiRolePermissionRelationMapper;
     private final AiRequestPathPermissionRelationMapper aiRequestPathPermissionRelationMapper;
-
     public AiPermissionServiceImpl(AiPermissionMapper aiPermissionMapper, AiRolePermissionRelationMapper aiRolePermissionRelationMapper, AiRequestPathPermissionRelationMapper aiRequestPathPermissionRelationMapper) {
         this.aiPermissionMapper = aiPermissionMapper;
         this.aiRolePermissionRelationMapper = aiRolePermissionRelationMapper;

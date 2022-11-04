@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,10 +34,13 @@ import java.util.List;
 @RequestMapping("/ai_request_path/aiRequestPath")
 @Transactional(rollbackFor=Exception.class)
 public class AiRequestPathController {
-    @Autowired
-    private AiPermissionServiceImpl aiPermissionService;
-    @Autowired
-    private AiRequestPathServiceImpl aiRequestPathService;
+    private final AiPermissionServiceImpl aiPermissionService;
+    private final AiRequestPathServiceImpl aiRequestPathService;
+
+    public AiRequestPathController(AiPermissionServiceImpl aiPermissionService, AiRequestPathServiceImpl aiRequestPathService) {
+        this.aiPermissionService = aiPermissionService;
+        this.aiRequestPathService = aiRequestPathService;
+    }
 
     @PostMapping("/saveRequestPath")
     @Operation(summary  = "新建请求路径")
@@ -47,6 +49,10 @@ public class AiRequestPathController {
             return ResultTool.fail(ResultCode.PARAM_IS_BLANK);
         }
         aiRequestPath.preInsert();
+        String tagName = aiRequestPath.getTagName();
+        if(StringUtils.isNotBlank(tagName)){
+            aiRequestPath.setTagRank(aiRequestPathService.selTagNextRank(tagName));
+        }
         if (aiRequestPathService.save(aiRequestPath)) {
             aiPermissionService.saveRequestPathAllPermission(aiRequestPath.getId());
         }

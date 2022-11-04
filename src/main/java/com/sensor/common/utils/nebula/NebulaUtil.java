@@ -34,15 +34,6 @@ public class NebulaUtil {
 
     /**
      * @return java.lang.String
-     * @Description 查询 spaceName
-     * @Param [projectId]
-     **/
-    public static String getProjectName(String projectId){
-        return projectId;
-    }
-
-    /**
-     * @return java.lang.String
      * @Description 查询 spaces/tags/edges
      * @Param [GraphShowAttribute]
      **/
