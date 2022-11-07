@@ -9,6 +9,7 @@ import com.sensor.common.utils.sys.UserUtils;
 import com.sensor.common.vo.JsonResult;
 import com.sensor.common.vo.ResultTool;
 import com.sensor.modular.authentication.user.entity.AiUser;
+import com.sensor.modular.authentication.user.enums.EnabledEnum;
 import com.sensor.modular.authentication.user.service.impl.AiUserServiceImpl;
 import com.sensor.modular.authentication.user_role_relation.entity.AiUserRoleRelation;
 import com.sensor.modular.authentication.user_role_relation.service.impl.AiUserRoleRelationServiceImpl;
@@ -183,7 +184,7 @@ public class AiUserController {
             return ResultTool.fail(ResultCode.PARAM_NOT_COMPLETE);
         }
         AiUser gu = new AiUser();
-        gu.setEnabled(Integer.valueOf(enabled));
+        gu.setEnabled(EnabledEnum.valueOf(enabled));
         LambdaQueryWrapper<AiUser> uw = new LambdaQueryWrapper<>();
         uw.eq(AiUser::getAccount,account);
         aiUserService.update(gu,uw);

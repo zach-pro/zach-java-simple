@@ -19,7 +19,7 @@ spring:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
   datasource:
-    url: jdbc:mysql://192.168.181.166:3306/sensor
+    url: jdbc:mysql://localhost:3306/sensor
     username: root
     password: root223723
   # Redis配置
@@ -42,9 +42,9 @@ spring:
       max-request-size: 10MB
 #minio配置
 minio:
-  endpoint: http://192.168.181.137:8226
-  access-key: ART1CVM7ZH017FNTT1KN
-  secret-key: 9MY0FBr3elTDucko+V9r2N5gVcHzENwoWsFnowW3
+  endpoint: http://43.138.41.144:9000
+  access-key: admin
+  secret-key: admin123
 #普罗米修斯
 management:
   endpoints:
@@ -67,7 +67,7 @@ mybatis-plus:
 #图数据库nebula
 nebula:
   address[0]:
-    host: 192.168.181.137
+    host: 43.138.41.144
     port: 9669
   username: root
   password: root

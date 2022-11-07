@@ -1,8 +1,8 @@
 package com.sensor.common.config;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.google.common.collect.Maps;
 import com.sensor.common.utils.PropertiesLoader;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 

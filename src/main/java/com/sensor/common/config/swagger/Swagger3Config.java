@@ -1,4 +1,4 @@
-package com.sensor.common.config;
+package com.sensor.common.config.swagger;
 
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;

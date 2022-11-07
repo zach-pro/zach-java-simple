@@ -1,25 +1,32 @@
 package com.sensor.modular.authentication.request_path.controller;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.sensor.common.constant.ResultCode;
 import com.sensor.common.vo.JsonResult;
 import com.sensor.common.vo.ResultTool;
+import com.sensor.modular.authentication.permission.entity.AiPermission;
 import com.sensor.modular.authentication.permission.service.impl.AiPermissionServiceImpl;
 import com.sensor.modular.authentication.request_path.entity.AiRequestPath;
 import com.sensor.modular.authentication.request_path.service.impl.AiRequestPathServiceImpl;
+import com.sensor.modular.authentication.request_path_permission_relation.entity.AiRequestPathPermissionRelation;
+import com.sensor.modular.authentication.request_path_permission_relation.service.impl.AiRequestPathPermissionRelationServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * <p>
@@ -34,12 +41,16 @@ import java.util.List;
 @RequestMapping("/ai_request_path/aiRequestPath")
 @Transactional(rollbackFor=Exception.class)
 public class AiRequestPathController {
+    private final RestTemplate restTemplate;
     private final AiPermissionServiceImpl aiPermissionService;
     private final AiRequestPathServiceImpl aiRequestPathService;
+    private final AiRequestPathPermissionRelationServiceImpl aiRequestPathPermissionRelationService;
 
-    public AiRequestPathController(AiPermissionServiceImpl aiPermissionService, AiRequestPathServiceImpl aiRequestPathService) {
+    public AiRequestPathController(AiPermissionServiceImpl aiPermissionService, AiRequestPathServiceImpl aiRequestPathService, RestTemplate restTemplate, AiRequestPathPermissionRelationServiceImpl aiRequestPathPermissionRelationService) {
         this.aiPermissionService = aiPermissionService;
         this.aiRequestPathService = aiRequestPathService;
+        this.restTemplate = restTemplate;
+        this.aiRequestPathPermissionRelationService = aiRequestPathPermissionRelationService;
     }
 
     @PostMapping("/saveRequestPath")
@@ -104,4 +115,44 @@ public class AiRequestPathController {
         }
         return ResultTool.success(aiRequestPathService.getById(id));
     }
+
+    @GetMapping("/selSwaggerApiDocAdd")
+    @Operation(summary  = "Api赋权")
+    public JsonResult selSwaggerApiDocAdd(){
+        // 请求服务地址
+        String modelHref = "http://127.0.0.1:9300/api-docs";
+        String result = restTemplate.getForObject(modelHref, String.class);
+        JSONObject paths = (JSONObject) Objects.requireNonNull(JSON.parseObject(result)).get("paths");
+        List<AiPermission> allPermissions = aiPermissionService.list(new LambdaQueryWrapper<>());
+        Map<String,Integer> tagMap = new HashMap<>(paths.entrySet().size());
+        for (Map.Entry<String, Object> entry : paths.entrySet()) {
+            AiRequestPath requestPath = new AiRequestPath();
+            JSONObject value = (JSONObject) entry.getValue();
+            for (Map.Entry<String, Object> obj : value.entrySet()) {
+                requestPath.setUrl(entry.getKey());
+                JSONObject postObject = (JSONObject) obj.getValue();
+                Object summary = postObject.get("summary");
+                Object desc = summary != null ? summary : "";
+                requestPath.setDescription(String.valueOf(desc));
+                JSONArray tags = (JSONArray) postObject.get("tags");
+                for (Object tag : tags) {
+                    Integer compute = tagMap.compute(tag.toString(), (k, v) -> (v == null) ? 0 : ++v);
+                    requestPath.setTagName(tag.toString());
+                    requestPath.setTagRank(compute);
+                }
+            }
+            requestPath.preInsert();
+            aiRequestPathService.save(requestPath);
+            AiRequestPathPermissionRelation requestPathPermissionRelation;
+            for (AiPermission permission : allPermissions) {
+                requestPathPermissionRelation = new AiRequestPathPermissionRelation();
+                requestPathPermissionRelation.setUrlId(requestPath.getId());
+                requestPathPermissionRelation.setPermissionId(permission.getId());
+                requestPathPermissionRelation.preInsert();
+                aiRequestPathPermissionRelationService.save(requestPathPermissionRelation);
+            }
+        }
+        return ResultTool.success(result);
+    }
+
 }

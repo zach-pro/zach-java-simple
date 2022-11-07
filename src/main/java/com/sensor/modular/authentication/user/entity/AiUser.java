@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sensor.common.base.BaseEntity;
 import com.sensor.common.constant.LockFlag;
-import com.sensor.common.constant.StopFlag;
+import com.sensor.modular.authentication.user.enums.EnabledEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -30,7 +30,7 @@ public class AiUser extends BaseEntity<AiUser> {
     private String password;
 
     @Schema(description = "账号状态: 1启用 2禁用")
-    private Integer enabled;
+    private EnabledEnum enabled;
 
     @Schema(description = "手机号")
     private String iphone;
@@ -55,7 +55,7 @@ public class AiUser extends BaseEntity<AiUser> {
     @TableField(exist = false)
     private String roleId;
 
-    public AiUser(String account, String password, Integer enabled, Integer accountNotLocked) {
+    public AiUser(String account, String password, EnabledEnum enabled, Integer accountNotLocked) {
         this.account = account;
         this.password = password;
         this.enabled = enabled;
@@ -66,7 +66,7 @@ public class AiUser extends BaseEntity<AiUser> {
      * 项目是否启用
      */
     public boolean selEnabled(){
-        if (Integer.valueOf(StopFlag.ENABLE.getErrCode()).equals(this.enabled)) {
+        if (EnabledEnum.ENABLE.equals(this.enabled)) {
             return true;
         }
         return false;
@@ -77,9 +77,9 @@ public class AiUser extends BaseEntity<AiUser> {
      */
     public static int transformationEnabled(boolean flag){
         if (flag) {
-            return Integer.parseInt(StopFlag.ENABLE.getErrCode());
+            return EnabledEnum.ENABLE.getValue();
         }
-        return Integer.parseInt(StopFlag.DISABLE.getErrCode());
+        return EnabledEnum.DISABLE.getValue();
     }
 
     /**
