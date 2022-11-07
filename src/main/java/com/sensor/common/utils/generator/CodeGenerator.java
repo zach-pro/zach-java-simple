@@ -1,10 +1,5 @@
 package com.sensor.common.utils.generator;
 
-/*
- * @ClassName CodeGenerator
- * @description: 代码生成器
- */
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -16,9 +11,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
+
+/**
+ * @author 代码生成器
+ */
 @Slf4j
 public class CodeGenerator {
-    private static String module_name = "test/";
+    private static String module_name = "";
     // TODO 项目名称
     private static final String PROJECT_NAME = "sensor";
     // TODO 微服务项目模块名（可选，和单体二选一）
@@ -36,7 +35,7 @@ public class CodeGenerator {
     // TODO  作者
     private static final String AUTHOR = "apple";
     // TODO  去除的表前缀（可选）
-    private static final String FieldPrefix = "";
+    private static final String FieldPrefix = "ai_";
     /**
      * 项目路径
      */
@@ -44,36 +43,37 @@ public class CodeGenerator {
     /**
      * xml路径
      */
-    private static final String XML_PATH = PARENT_DIR + "/src/main/resources/mapper/"+module_name+"/"; //单体项目
+    private static final String XML_PATH = PARENT_DIR + "/src/main/resources/mapper/"; //单体项目
     //private static final String XML_PATH = PARENT_DIR + "/"+CLOUD_NAME+"/src/main/resources/mapper";
     /**
      * entity路径
      */
-    private static final String ENTITY_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR+module_name+"/entity";//单体项目
+    private static final String ENTITY_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR;//单体项目
     //private static final String ENTITY_PATH = PARENT_DIR +"/"+CLOUD_NAME+"/src/main/java"+PACKAGE_DIR+"entity";
     /**
      * mapper（Dao）路径
      */
-    private static final String MAPPER_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR+module_name+"/mapper";//单体项目
+    private static final String MAPPER_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR;//单体项目
     //private static final String MAPPER_PATH = PARENT_DIR +"/"+CLOUD_NAME+"/src/main/java"+PACKAGE_DIR+"dao";
     /**
      * service路径
      */
-    private static final String SERVICE_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR+module_name+"/service";//单体项目
+    private static final String SERVICE_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR;//单体项目
     //private static final String SERVICE_PATH = PARENT_DIR +"/"+CLOUD_NAME+"/src/main/java"+PACKAGE_DIR+"service";
     /**
      * serviceImpl路径
      */
-    private static final String SERVICE_IMPL_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR+module_name+"/service/impl/";//单体项目
+    private static final String SERVICE_IMPL_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR;//单体项目
     //private static final String SERVICE_IMPL_PATH = PARENT_DIR +"/"+CLOUD_NAME+"/src/main/java"+PACKAGE_DIR+"service/impl/";
     /**
      * controller路径
      */
-    private static final String CONTROLLER_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR+module_name+"/controller";//单体项目
+    private static final String CONTROLLER_PATH = PARENT_DIR +"/src/main/java"+PACKAGE_DIR;//单体项目
     //private static final String CONTROLLER_PATH = PARENT_DIR +"/"+CLOUD_NAME+"/src/main/java"+PACKAGE_DIR+"controller";
 
     public static void main(String[] args) {
         module_name = scanner("模块名");
+        String packageName = PACKAGE_EXE + "." + module_name;
         FastAutoGenerator.create(URL, USERNAME, PASSWORD)
                 // 全局配置
                 .globalConfig(builder -> builder
@@ -86,13 +86,12 @@ public class CodeGenerator {
                 // 包配置
                 .packageConfig(builder -> builder
                         .parent("")
-                        .moduleName(module_name) // 模块包名
                         .xml("mapper")
-                        .entity(PACKAGE_EXE+"."+module_name+".entity")
-                        .mapper(PACKAGE_EXE+"."+module_name+".dao")
-                        .service(PACKAGE_EXE+"."+module_name+".service")
-                        .serviceImpl(PACKAGE_EXE+"."+module_name+".service.impl")
-                        .controller(PACKAGE_EXE+"."+module_name+".controller")
+                        .entity(packageName+".entity")
+                        .mapper(packageName+".mapper")
+                        .service(packageName+".service")
+                        .serviceImpl(packageName+".service.impl")
+                        .controller(packageName+".controller")
                         .pathInfo(getPathInfo())
                 )
                 // 策略配置
@@ -131,7 +130,7 @@ public class CodeGenerator {
                                         .superClass(BaseMapper.class)
                                         .formatMapperFileName("%sMapper")
                                         .formatXmlFileName("%sMapper")
-                        //.enableMapperAnnotation()
+                        .enableMapperAnnotation()
                 )
                 // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .templateConfig(builder -> {
@@ -146,12 +145,12 @@ public class CodeGenerator {
      */
     private static Map<OutputFile, String> getPathInfo() {
         Map<OutputFile, String> pathInfo = new HashMap<>(5);
-        pathInfo.put(OutputFile.entity, ENTITY_PATH);
-        pathInfo.put(OutputFile.mapper, MAPPER_PATH);
-        pathInfo.put(OutputFile.service, SERVICE_PATH);
-        pathInfo.put(OutputFile.serviceImpl, SERVICE_IMPL_PATH);
-        pathInfo.put(OutputFile.controller, CONTROLLER_PATH);
-        pathInfo.put(OutputFile.xml, XML_PATH);
+        pathInfo.put(OutputFile.entity, ENTITY_PATH+module_name+"/entity");
+        pathInfo.put(OutputFile.mapper, MAPPER_PATH+module_name+"/mapper");
+        pathInfo.put(OutputFile.service, SERVICE_PATH+module_name+"/service");
+        pathInfo.put(OutputFile.serviceImpl, SERVICE_IMPL_PATH+module_name+"/service/impl/");
+        pathInfo.put(OutputFile.controller, CONTROLLER_PATH+module_name+"/controller");
+        pathInfo.put(OutputFile.xml, XML_PATH+module_name+"/");
         return pathInfo;
     }
 
