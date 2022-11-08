@@ -2,7 +2,6 @@ package com.sensor.modular.authentication.user.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.sensor.common.constant.LockFlag;
 import com.sensor.common.constant.ResultCode;
 import com.sensor.common.constant.StopFlag;
 import com.sensor.common.utils.sys.UserUtils;
@@ -10,6 +9,7 @@ import com.sensor.common.vo.JsonResult;
 import com.sensor.common.vo.ResultTool;
 import com.sensor.modular.authentication.user.entity.AiUser;
 import com.sensor.modular.authentication.user.enums.EnabledEnum;
+import com.sensor.modular.authentication.user.enums.LockedEnum;
 import com.sensor.modular.authentication.user.service.impl.AiUserServiceImpl;
 import com.sensor.modular.authentication.user_role_relation.entity.AiUserRoleRelation;
 import com.sensor.modular.authentication.user_role_relation.service.impl.AiUserRoleRelationServiceImpl;
@@ -200,16 +200,16 @@ public class AiUserController {
             @Parameter(name = "account", description = "用户账号", required = true),
             @Parameter(name = "lock", description = "用户是否锁定: 1可用|2不可用", required = true),
     })
-    public JsonResult setLockUser(String account, String lock) {
-        if (StringUtils.isBlank(account) || StringUtils.isBlank(lock)) {
+    public JsonResult setLockUser(String account, LockedEnum lock) {
+        if (StringUtils.isBlank(account) || lock == null) {
             return ResultTool.fail(ResultCode.PARAM_NOT_COMPLETE);
         }
         AiUser gu = new AiUser();
-        gu.setAccountNotLocked(Integer.valueOf(lock));
+        gu.setAccountNotLocked(lock);
         LambdaQueryWrapper<AiUser> uw = new LambdaQueryWrapper<>();
         uw.eq(AiUser::getAccount, account);
         aiUserService.update(gu, uw);
-        if (!LockFlag.UN_LOCKED.getErrCode().equals(lock)) {
+        if (!LockedEnum.UN_LOCKED.equals(lock)) {
             UserUtils.removeUser(account);
         }
         return ResultTool.success();

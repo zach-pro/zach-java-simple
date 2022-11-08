@@ -1,4 +1,4 @@
-package com.sensor.common.config;
+package com.sensor.common.config.mybatis;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

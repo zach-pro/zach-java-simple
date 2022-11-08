@@ -7,21 +7,23 @@ import lombok.Getter;
 
 /**
  * @author by 张益豪
- * @Classname EnabledEnum
+ * @Classname LockedEnum
+ * @Description 账户锁定
  */
 @Getter
 @SwaggerDisplayEnum(index = "value", name = "desc")
-public enum EnabledEnum implements IEnum<Integer> {
-    ENABLE(1, "启用"),
-    DISABLE(2, "禁用");
+public enum LockedEnum implements IEnum<Integer> {
+    UN_LOCKED(1, "否: 未锁定"),
+    LOCKED(2, "是: 锁定");
 
     @JsonValue
     private final Integer value;
     private final String desc;
 
-    EnabledEnum(Integer value, String desc) {
+    LockedEnum(Integer value, String desc) {
         this.value = value;
         this.desc = desc;
     }
-
 }
+
+

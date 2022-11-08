@@ -3,8 +3,8 @@ package com.sensor.modular.authentication.user.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sensor.common.base.BaseEntity;
-import com.sensor.common.constant.LockFlag;
 import com.sensor.modular.authentication.user.enums.EnabledEnum;
+import com.sensor.modular.authentication.user.enums.LockedEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,7 +39,7 @@ public class AiUser extends BaseEntity<AiUser> {
     private String email;
 
     @Schema(description = "账号锁定: 1否 2是")
-    private Integer accountNotLocked;
+    private LockedEnum accountNotLocked;
 
     @Schema(description = "公司名称")
     private String corporateName;
@@ -55,7 +55,7 @@ public class AiUser extends BaseEntity<AiUser> {
     @TableField(exist = false)
     private String roleId;
 
-    public AiUser(String account, String password, EnabledEnum enabled, Integer accountNotLocked) {
+    public AiUser(String account, String password, EnabledEnum enabled, LockedEnum accountNotLocked) {
         this.account = account;
         this.password = password;
         this.enabled = enabled;
@@ -86,7 +86,7 @@ public class AiUser extends BaseEntity<AiUser> {
      * 是否锁定
      */
     public boolean selAccountNotLocked(){
-        if (Integer.valueOf(LockFlag.UN_LOCKED.getErrCode()).equals(this.accountNotLocked)) {
+        if (LockedEnum.UN_LOCKED.equals(this.accountNotLocked)) {
             return true;
         }
         return false;
@@ -97,8 +97,8 @@ public class AiUser extends BaseEntity<AiUser> {
      */
     public static int transformationAccountNotLocked(boolean flag){
         if (flag) {
-            return Integer.parseInt(LockFlag.UN_LOCKED.getErrCode());
+            return LockedEnum.UN_LOCKED.getValue();
         }
-        return Integer.parseInt(LockFlag.LOCKED.getErrCode());
+        return LockedEnum.LOCKED.getValue();
     }
 }
