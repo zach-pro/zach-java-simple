@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.sensor.common.base.SwaggerDisplayEnum;
 import lombok.Getter;
 
+import java.util.Objects;
+
 /**
  * @author by 张益豪
  * @Classname LockedEnum
@@ -23,6 +25,14 @@ public enum LockedEnum implements IEnum<Integer> {
     LockedEnum(Integer value, String desc) {
         this.value = value;
         this.desc = desc;
+    }
+    public static LockedEnum getByCode(int code) {
+        for (LockedEnum value : LockedEnum.values()) {
+            if (Objects.equals(code, value.getValue())) {
+                return value;
+            }
+        }
+        return null;
     }
 }
 

@@ -3,7 +3,6 @@ package com.sensor.modular.authentication.user.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.sensor.common.constant.ResultCode;
-import com.sensor.common.constant.StopFlag;
 import com.sensor.common.utils.sys.UserUtils;
 import com.sensor.common.vo.JsonResult;
 import com.sensor.common.vo.ResultTool;
@@ -179,16 +178,16 @@ public class AiUserController {
             @Parameter(name = "account", description = "用户账号", required = true),
             @Parameter(name = "enabled", description = "账号是否可用: 1启用|2禁用", required = true)
     })
-    public JsonResult setEnabledUser(String account,String enabled){
-        if(StringUtils.isBlank(account) || StringUtils.isBlank(enabled)){
+    public JsonResult setEnabledUser(String account,EnabledEnum enabled){
+        if(StringUtils.isBlank(account) || enabled == null){
             return ResultTool.fail(ResultCode.PARAM_NOT_COMPLETE);
         }
         AiUser gu = new AiUser();
-        gu.setEnabled(EnabledEnum.valueOf(enabled));
+        gu.setEnabled(enabled);
         LambdaQueryWrapper<AiUser> uw = new LambdaQueryWrapper<>();
         uw.eq(AiUser::getAccount,account);
         aiUserService.update(gu,uw);
-        if(!StopFlag.ENABLE.getErrCode().equals(enabled)){
+        if(!EnabledEnum.ENABLE.equals(enabled)){
             UserUtils.removeUser(account);
         }
         return ResultTool.success();

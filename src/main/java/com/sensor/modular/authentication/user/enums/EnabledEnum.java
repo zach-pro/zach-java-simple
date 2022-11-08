@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.sensor.common.base.SwaggerDisplayEnum;
 import lombok.Getter;
 
+import java.util.Objects;
+
 /**
  * @author by 张益豪
  * @Classname EnabledEnum
@@ -24,4 +26,12 @@ public enum EnabledEnum implements IEnum<Integer> {
         this.desc = desc;
     }
 
+    public static EnabledEnum getByCode(int code) {
+        for (EnabledEnum value : EnabledEnum.values()) {
+            if (Objects.equals(code, value.getValue())) {
+                return value;
+            }
+        }
+        return null;
+    }
 }
