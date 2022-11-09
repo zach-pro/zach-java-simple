@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author apple
  * 
  */
-@Tag(name = "ai_user_role_relation", description = "用户角色关联模块")
+@Tag(name = "用户角色关联模块", description = "用户角色关联模块")
 @RestController
 @RequestMapping("/ai_user_role_relation/aiUserRoleRelation")
 @Transactional(rollbackFor=Exception.class)

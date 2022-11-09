@@ -35,7 +35,7 @@ import java.util.Map;
  * @author apple
  * 
  */
-@Tag(name = "ai_role", description = "角色模块")
+@Tag(name = "角色模块", description = "角色模块")
 @RestController
 @RequestMapping("/ai_role/aiRole")
 @Transactional(rollbackFor=Exception.class)

@@ -36,7 +36,7 @@ import java.util.Objects;
  * @author apple
  * 
  */
-@Tag(name = "ai_request_path", description = "请求路径管理模块")
+@Tag(name = "请求路径管理模块", description = "请求路径管理模块")
 @RestController
 @RequestMapping("/ai_request_path/aiRequestPath")
 @Transactional(rollbackFor=Exception.class)

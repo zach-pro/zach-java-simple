@@ -23,7 +23,7 @@ import java.util.Map;
  * @Description 通用服务: 文件系统
  * @Date 2022/9/7 19:43
  */
-@Tag(name = "minio", description = "minio文件服务")
+@Tag(name = "minio文件服务", description = "minio文件服务")
 @RestController
 @RequestMapping("/minio")
 @Transactional(rollbackFor=Exception.class)

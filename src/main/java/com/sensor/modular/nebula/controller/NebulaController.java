@@ -26,7 +26,7 @@ import java.util.List;
  * @Description 图数据库操作
  * @Date 2022/8/17 17:30
  */
-@Tag(name = "graph_nebula", description = "图数据库操作")
+@Tag(name = "图数据库操作", description = "图数据库操作")
 @RestController
 @RequestMapping("/graph_nebula")
 @Transactional(rollbackFor=Exception.class)

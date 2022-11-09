@@ -1,4 +1,4 @@
-package com.sensor.common.aop;
+package com.sensor.common.exception;
 
 
 import com.sensor.common.constant.ResultCode;
@@ -27,6 +27,14 @@ public class ControllerExceptionHandler {
         String messageId = fieldError != null ? fieldError.getDefaultMessage() : "";
         log.error(e.getMessage() + field + messageId);
         return ResultTool.fail(ResultCode.PARAM_NOT_VALID);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseBody
+    public JsonResult IllegalArgumentException(Exception e) {
+        e.printStackTrace();
+        log.error(e.getMessage());
+        return ResultTool.fail(ResultCode.PARAM_NOT_CHECK);
     }
 
     @ExceptionHandler(NullPointerException.class)

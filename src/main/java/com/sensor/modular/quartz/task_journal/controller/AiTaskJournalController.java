@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author apple
  * 
  */
-@Tag(name = "ai_task_journal", description = "任务日志模块")
+@Tag(name = "任务日志模块", description = "任务日志模块")
 @RestController
 @RequestMapping("/ai_task_journal/aiTaskJournal")
 public class AiTaskJournalController {

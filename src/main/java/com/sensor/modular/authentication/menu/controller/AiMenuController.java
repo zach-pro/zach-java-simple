@@ -31,7 +31,7 @@ import java.util.Map;
  *
  * @author apple
  */
-@Tag(name = "ai_menu", description = "菜单模块")
+@Tag(name = "菜单模块", description = "菜单模块")
 @RestController
 @RequestMapping("/ai_menu/aiMenu")
 @Transactional(rollbackFor=Exception.class)

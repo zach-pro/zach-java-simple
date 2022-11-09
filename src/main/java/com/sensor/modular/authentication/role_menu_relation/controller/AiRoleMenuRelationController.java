@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author apple
  * 
  */
-@Tag(name = "ai_role_menu_relation", description = "角色与菜单关联模块")
+@Tag(name = "角色与菜单关联模块", description = "角色与菜单关联模块")
 @RestController
 @RequestMapping("/ai_role_menu_relation/aiRoleMenuRelation")
 @Transactional(rollbackFor=Exception.class)

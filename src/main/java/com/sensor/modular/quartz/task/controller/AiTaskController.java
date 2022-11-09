@@ -38,7 +38,7 @@ import java.util.List;
  * @author apple
  * 
  */
-@Tag(name = "ai_task", description = "定时任务模块")
+@Tag(name = "定时任务模块", description = "定时任务模块")
 @RestController
 @RequestMapping("/ai_task/aiTask")
 public class AiTaskController {
