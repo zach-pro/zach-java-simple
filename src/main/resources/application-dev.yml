@@ -56,7 +56,8 @@ management:
       application: ${spring.application.name}
 #Mybatis-plus
 mybatis-plus:
-  mapper-locations: classpath*:mapper/*/*Mapper.xml
+  mapper-locations:
+    classpath*: mapper/**/*Mapper.xml
   global-config:
     field-strategy: 2
     db-column-underline: true
