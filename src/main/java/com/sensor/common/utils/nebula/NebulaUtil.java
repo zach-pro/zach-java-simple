@@ -325,7 +325,7 @@ public class NebulaUtil {
     public static String queryMatchEdge(GraphEdgeQuery space) {
         List<String> edgeList = space.getEdgeList();
         StringBuilder edgeBuilder = new StringBuilder();
-        if (!edgeList.isEmpty()) {
+        if (edgeList != null && !edgeList.isEmpty()) {
             edgeBuilder.append(":");
             for (int i = 0; i < edgeList.size(); i++) {
                 edgeBuilder.append(edgeList.get(i)).append("|");
