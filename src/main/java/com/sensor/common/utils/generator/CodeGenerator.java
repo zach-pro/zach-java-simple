@@ -17,7 +17,7 @@ import java.util.*;
  */
 @Slf4j
 public class CodeGenerator {
-    private static String module_name = "";
+    private static String module_name;
     // TODO 项目名称
     private static final String PROJECT_NAME = "sensor";
     // TODO 微服务项目模块名（可选，和单体二选一）
@@ -35,7 +35,7 @@ public class CodeGenerator {
     // TODO  作者
     private static final String AUTHOR = "apple";
     // TODO  去除的表前缀（可选）
-    private static final String FieldPrefix = "ai_";
+    private static final String FieldPrefix = "";
     /**
      * 项目路径
      */
@@ -96,41 +96,41 @@ public class CodeGenerator {
                 )
                 // 策略配置
                 .strategyConfig((scanner, builder) ->
-                                builder.addInclude(getTables(scanner.apply("请输入表名，多个表之间用英文逗号分隔，所有输入all")))
-                                        .addTablePrefix(FieldPrefix)
-                                        // entity
-                                        .entityBuilder()
-                                        .fileOverride()
-                                        .enableChainModel()
-                                        .fileOverride()
-                                        // 开启lombock
-                                        .enableLombok()
-                                        .enableTableFieldAnnotation()
-                                        //.logicDeleteColumnName("deleted")
-                                        //.logicDeletePropertyName("deleteFlag")
-                                        .idType(IdType.AUTO)
-                                        //.addTableFills(new Column("create_time", FieldFill.INSERT))
-                                        //.addTableFills(new Property("update_time", FieldFill.INSERT_UPDATE))
-                                        // controller
-                                        .controllerBuilder()
-                                        .fileOverride()
-                                        .enableRestStyle()
-                                        .formatFileName("%sController")
-                                        // service
-                                        .serviceBuilder()
-                                        .fileOverride()
-                                        .superServiceClass(IService.class)
-                                        .formatServiceFileName("%sService")
-                                        .formatServiceImplFileName("%sServiceImpl")
-                                        // mapper
-                                        .mapperBuilder()
-                                        .fileOverride()
-                                        .enableBaseResultMap()
-                                        .enableBaseColumnList()
-                                        .superClass(BaseMapper.class)
-                                        .formatMapperFileName("%sMapper")
-                                        .formatXmlFileName("%sMapper")
-                        .enableMapperAnnotation()
+                        builder.addInclude(getTables(scanner.apply("请输入表名，多个表之间用英文逗号分隔，所有输入all")))
+                                .addTablePrefix(FieldPrefix)
+                                // entity
+                                .entityBuilder()
+                                .fileOverride()
+                                .enableChainModel()
+                                .fileOverride()
+                                // 开启lombock
+                                .enableLombok()
+                                .enableTableFieldAnnotation()
+                                //.logicDeleteColumnName("deleted")
+                                //.logicDeletePropertyName("deleteFlag")
+                                .idType(IdType.AUTO)
+                                //.addTableFills(new Column("create_time", FieldFill.INSERT))
+                                //.addTableFills(new Property("update_time", FieldFill.INSERT_UPDATE))
+                                // controller
+                                .controllerBuilder()
+                                .fileOverride()
+                                .enableRestStyle()
+                                .formatFileName("%sController")
+                                // service
+                                .serviceBuilder()
+                                .fileOverride()
+                                .superServiceClass(IService.class)
+                                .formatServiceFileName("%sService")
+                                .formatServiceImplFileName("%sServiceImpl")
+                                // mapper
+                                .mapperBuilder()
+                                .fileOverride()
+                                .enableBaseResultMap()
+                                .enableBaseColumnList()
+                                .superClass(BaseMapper.class)
+                                .formatMapperFileName("%sMapper")
+                                .formatXmlFileName("%sMapper")
+                                .enableMapperAnnotation()
                 )
                 // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .templateConfig(builder -> {
@@ -144,13 +144,14 @@ public class CodeGenerator {
      * 获取路径信息map
      */
     private static Map<OutputFile, String> getPathInfo() {
+        String replace = module_name.replace(".", "/");
         Map<OutputFile, String> pathInfo = new HashMap<>(5);
-        pathInfo.put(OutputFile.entity, ENTITY_PATH+module_name+"/entity");
-        pathInfo.put(OutputFile.mapper, MAPPER_PATH+module_name+"/mapper");
-        pathInfo.put(OutputFile.service, SERVICE_PATH+module_name+"/service");
-        pathInfo.put(OutputFile.serviceImpl, SERVICE_IMPL_PATH+module_name+"/service/impl/");
-        pathInfo.put(OutputFile.controller, CONTROLLER_PATH+module_name+"/controller");
-        pathInfo.put(OutputFile.xml, XML_PATH+module_name+"/");
+        pathInfo.put(OutputFile.entity, ENTITY_PATH+replace+"/entity");
+        pathInfo.put(OutputFile.mapper, MAPPER_PATH+replace+"/mapper");
+        pathInfo.put(OutputFile.service, SERVICE_PATH+replace+"/service");
+        pathInfo.put(OutputFile.serviceImpl, SERVICE_IMPL_PATH+replace+"/service/impl/");
+        pathInfo.put(OutputFile.controller, CONTROLLER_PATH+replace+"/controller");
+        pathInfo.put(OutputFile.xml, XML_PATH+replace+"/");
         return pathInfo;
     }
 
