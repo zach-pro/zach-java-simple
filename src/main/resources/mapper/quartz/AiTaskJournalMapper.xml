@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sensor.modular.quartz.task_journal.mapper.AiTaskJournalMapper">
+    <select id="selectTaskJournal" resultType="com.sensor.modular.quartz.task_journal.vo.response.AiTaskJournalResponse">
+        SELECT
+        gtj.id AS id,
+        gtj.task_id AS taskId,
+        gtj.task_mode AS taskMode,
+        gtj.task_status AS taskStatus,
+        gtj.task_batch AS taskBatch,
+        gtj.start_time AS startTime,
+        gtj.end_time AS endTime,
+        gtj.create_user AS createUser,
+        gtj.create_time AS createTime
+        FROM ai_task_journal AS gtj
+        where gtj.id = #{id}
+    </select>
+    <select id="selectTaskJournalList" resultType="com.sensor.modular.quartz.task_journal.vo.response.AiTaskJournalResponse">
+        SELECT
+        gtj.id AS id,
+        gtj.task_id AS taskId,
+        gtj.task_mode AS taskMode,
+        gtj.task_status AS taskStatus,
+        gtj.task_batch AS taskBatch,
+        gtj.start_time AS startTime,
+        gtj.end_time AS endTime,
+        gtj.create_user AS createUser,
+        gtj.create_time AS createTime
+        FROM ai_task_journal AS gtj
+        <where>
+            1=1
+            <if test="taskId != null and taskId != ''">
+                AND gtj.task_id = #{taskId}
+            </if>
+            <if test="taskMode != null and taskMode != ''">
+               AND gtj.task_mode = #{taskMode}
+            </if>
+        </where>
+        order by gtj.create_time desc
+    </select>
+    <update id="updateTaskBatchAddOne">
+        update ai_task_journal
+        set task_batch = task_batch + 1
+        where id = #{id};
+    </update>
+</mapper>
