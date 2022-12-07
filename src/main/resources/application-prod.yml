@@ -2,7 +2,6 @@
 server:
   port: 9300
   servlet:
-    #context-path: /sensor
     context-path: /
     encoding:
       force: true
@@ -14,37 +13,21 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: sensor-service
+    name: emas-service
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
   datasource:
-    url: jdbc:mysql://192.168.181.166:3306/sensor
-    username: root
-    password: root223723
-  # Redis配置
-  redis:
-    host: 127.0.0.1
-    database: 0
-    port: 6379
-    password:
-    timeout: 10
-    jedis:
-      pool:
-        max-active: 10
-        max-idle: 10
-        min-idle: 10
+    url: jdbc:postgresql://localhost:5432/emas
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
   # 配置文件上传大小限制
   servlet:
     multipart:
       enabled: true
       max-file-size: 10MB
       max-request-size: 10MB
-#minio配置
-minio:
-  endpoint: http://192.168.181.137:8226
-  access-key: ART1CVM7ZH017FNTT1KN
-  secret-key: 9MY0FBr3elTDucko+V9r2N5gVcHzENwoWsFnowW3
 #普罗米修斯
 management:
   endpoints:
@@ -65,16 +48,6 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-#图数据库nebula
-nebula:
-  address[0]:
-    host: 192.168.181.137
-    port: 9669
-  username: root
-  password: root
-  reconnect: false
-  idleTime: 10000
-  maxConnSize: 1000
 # 日志级别: DEBUG INFO WARN ERROR
 logging:
   level:
@@ -93,10 +66,10 @@ springdoc:
     #自定义swagger前端请求路径，输入http：127.0.0.1:8080/test会自动重定向到swagger页面
     path: /swagger
   #包扫描路径
-  packages-to-scan: com.sensor.modular
+  packages-to-scan: com.emas.modular
   #这里定义了两个分组，可定义多个，也可以不定义
   group-configs:
     #分组名
-    - group: sensor
+    - group: emas
       #按包路径匹配
-      packagesToScan: com.sensor.modular.*
+      packagesToScan: com.emas.modular.*

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emas.modular.emas.mapper.EmasMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.emas.modular.emas.entity.Emas">
+        <result column="mgt_org_code" property="mgtOrgCode" />
+        <result column="mgt_org_name" property="mgtOrgName" />
+        <result column="dist_lv" property="distLv" />
+        <result column="cust_num" property="custNum" />
+        <result column="tmnl_num" property="tmnlNum" />
+        <result column="yn_flag" property="ynFlag" />
+        <result column="meter_num" property="meterNum" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        mgt_org_code, mgt_org_name, dist_lv, cust_num, tmnl_num, yn_flag, meter_num
+    </sql>
+
+    <select id="customListSql" resultType="com.emas.modular.emas.entity.Emas">
+        ${sql}
+    </select>
+
+    <insert id="customInsertSql">
+        ${sql}
+    </insert>
+
+    <update id="customUpdateSql">
+        ${sql}
+    </update>
+
+    <delete id="customDeleteSql">
+        ${sql}
+    </delete>
+
+</mapper>
