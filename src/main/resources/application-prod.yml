@@ -2,7 +2,7 @@
 server:
   port: 9400
   servlet:
-    context-path: /
+    context-path: /emasApi
     encoding:
       force: true
       charset: UTF-8
@@ -18,7 +18,7 @@ spring:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
   datasource:
-    url: jdbc:postgresql://localhost:5432/emas
+    url: jdbc:postgresql://192.168.181.137:5432/emas
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
