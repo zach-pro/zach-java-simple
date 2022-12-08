@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sensor.modular.business.example.mapper.ExampleMapper">
+<mapper namespace="com.zach.modular.business.example.mapper.ExampleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.sensor.modular.business.example.entity.Example">
+    <resultMap id="BaseResultMap" type="com.zach.modular.business.example.entity.Example">
         <id column="id" property="id" />
         <result column="example_desc" property="exampleCode" />
         <result column="example_desc" property="exampleDesc" />

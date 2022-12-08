@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sensor.modular.quartz.task_journal.mapper.AiTaskJournalMapper">
-    <select id="selectTaskJournal" resultType="com.sensor.modular.quartz.task_journal.vo.response.AiTaskJournalResponse">
+<mapper namespace="com.zach.modular.quartz.task_journal.mapper.AiTaskJournalMapper">
+    <select id="selectTaskJournal" resultType="com.zach.modular.quartz.task_journal.vo.response.AiTaskJournalResponse">
         SELECT
         gtj.id AS id,
         gtj.task_id AS taskId,
@@ -15,7 +15,7 @@
         FROM ai_task_journal AS gtj
         where gtj.id = #{id}
     </select>
-    <select id="selectTaskJournalList" resultType="com.sensor.modular.quartz.task_journal.vo.response.AiTaskJournalResponse">
+    <select id="selectTaskJournalList" resultType="com.zach.modular.quartz.task_journal.vo.response.AiTaskJournalResponse">
         SELECT
         gtj.id AS id,
         gtj.task_id AS taskId,

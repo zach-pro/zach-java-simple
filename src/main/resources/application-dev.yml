@@ -2,7 +2,6 @@
 server:
   port: 9300
   servlet:
-    #context-path: /sensor
     context-path: /
     encoding:
       force: true
@@ -14,14 +13,14 @@ spring:
   main:
     allow-bean-definition-overriding: true
   application:
-    name: sensor-service
+    name: zach-service
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
   datasource:
-    url: jdbc:mysql://localhost:3306/sensor
-    username: root
-    password: root223723
+    url: jdbc:mysql://localhost:3306/xxx
+    username: xxx
+    password: xxx
   # Redis配置
   redis:
     host: 127.0.0.1
@@ -42,9 +41,9 @@ spring:
       max-request-size: 10MB
 #minio配置
 minio:
-  endpoint: http://43.138.41.144:9000
-  access-key: admin
-  secret-key: admin123
+  endpoint: http://localhost:8226
+  access-key: xxx
+  secret-key: xxx
 #普罗米修斯
 management:
   endpoints:
@@ -68,10 +67,10 @@ mybatis-plus:
 #图数据库nebula
 nebula:
   address[0]:
-    host: 43.138.41.144
+    host: xxx
     port: 9669
-  username: root
-  password: root
+  username: xxx
+  password: xxx
   reconnect: false
   idleTime: 10000
   maxConnSize: 1000
@@ -93,10 +92,10 @@ springdoc:
     #自定义swagger前端请求路径，输入http：127.0.0.1:8080/test会自动重定向到swagger页面
     path: /swagger
   #包扫描路径
-  packages-to-scan: com.sensor.modular
+  packages-to-scan: com.zach.modular
   #这里定义了两个分组，可定义多个，也可以不定义
   group-configs:
-      #分组名
-    - group: sensor
+    #分组名
+    - group: zach
       #按包路径匹配
-      packagesToScan: com.sensor.modular.*
+      packagesToScan: com.zach.modular.*

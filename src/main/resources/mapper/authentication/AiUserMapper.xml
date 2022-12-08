@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sensor.modular.authentication.user.mapper.AiUserMapper">
-    <select id="selectByName" resultType="com.sensor.modular.authentication.user.entity.AiUser">
+<mapper namespace="com.zach.modular.authentication.user.mapper.AiUserMapper">
+    <select id="selectByName" resultType="com.zach.modular.authentication.user.entity.AiUser">
         SELECT a.id,
                a.account,
                a.user_name,
@@ -20,7 +20,7 @@
         where a.account = #{userName}
     </select>
 
-    <select id="selectListByUser" resultType="com.sensor.modular.authentication.permission.entity.AiPermission">
+    <select id="selectListByUser" resultType="com.zach.modular.authentication.permission.entity.AiPermission">
         SELECT p.id,
                p.permission_code,
                p.permission_name
@@ -36,7 +36,7 @@
         WHERE u.id = #{userId}
     </select>
 
-    <select id="selectUserList" resultType="com.sensor.modular.authentication.user.entity.AiUser">
+    <select id="selectUserList" resultType="com.zach.modular.authentication.user.entity.AiUser">
         SELECT
         gu.id as id,
         gu.account as account,

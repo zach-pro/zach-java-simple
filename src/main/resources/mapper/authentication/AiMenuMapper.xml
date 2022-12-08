@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sensor.modular.authentication.menu.mapper.AiMenuMapper">
-    <select id="selMenuByRoleId" resultType="com.sensor.modular.authentication.menu.entity.AiMenu">
+<mapper namespace="com.zach.modular.authentication.menu.mapper.AiMenuMapper">
+    <select id="selMenuByRoleId" resultType="com.zach.modular.authentication.menu.entity.AiMenu">
         SELECT
             gm.id,
             gm.parent_id as parentId,
@@ -19,7 +19,7 @@
             grmr.role_id = #{roleId}
     </select>
 
-    <select id="selectMenuOne" resultType="com.sensor.modular.authentication.menu.entity.AiMenu">
+    <select id="selectMenuOne" resultType="com.zach.modular.authentication.menu.entity.AiMenu">
         SELECT
             gm.id,
             gm.parent_id as parentId,
@@ -35,7 +35,7 @@
         where gm.id = #{id}
     </select>
 
-    <select id="selectSubclassMenuList" resultType="com.sensor.modular.authentication.menu.entity.AiMenu">
+    <select id="selectSubclassMenuList" resultType="com.zach.modular.authentication.menu.entity.AiMenu">
         SELECT
             gm.id,
             gm.parent_id as parentId,
@@ -50,7 +50,7 @@
             ai_menu AS gm left join ai_menu gp on gm.parent_id = gp.id
     </select>
 
-    <select id="selParentMenuLists" resultType="com.sensor.modular.authentication.menu.entity.AiMenu">
+    <select id="selParentMenuLists" resultType="com.zach.modular.authentication.menu.entity.AiMenu">
         SELECT
             gm.id,
             gm.menu_href as menuHref,
