@@ -41,6 +41,9 @@
 		<com.cronutils.version>9.2.0</com.cronutils.version>
 		<poi.version>5.2.2</poi.version>
 		<pdfbox.version>2.0.27</pdfbox.version>
+		<elasticsearch.version>8.5.1</elasticsearch.version>
+		<jackson.version>2.14.0</jackson.version>
+		<jakarta.version>2.0.1</jakarta.version>
 	</properties>
 
 	<dependencies>
@@ -208,6 +211,22 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>co.elastic.clients</groupId>
+			<artifactId>elasticsearch-java</artifactId>
+			<version>${elasticsearch.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.json</groupId>
+			<artifactId>jakarta.json-api</artifactId>
+			<version>${jakarta.version}</version>
 		</dependency>
 	</dependencies>
 	<profiles>
